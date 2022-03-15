@@ -18,6 +18,9 @@ parts:
   gotcha:
     plugin: rust
     source: .
+    build-packages:
+      - gcc
+      - make
 
 apps:
   gotcha:
