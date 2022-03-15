@@ -1,4 +1,4 @@
-name: roboza-press
+name: robozapress
 version: git
 summary: A Bookmarker App built in rust that scrapes your google chrome saved bookmarks
 
@@ -10,12 +10,12 @@ description: |
   - Search in bookmarks
   - Navigate to your bookmarks easily
 
-base: core18
+base: core20
 confinement: devmode
 
 
 parts:
-  roboza-press:
+  robozapress:
     plugin: rust
     source: .
     build-packages:
@@ -25,5 +25,7 @@ parts:
       - openssl
 
 apps:
-  roboza-press:
-    command: bin/roboza-press
+  robozapress:
+    command: bin/robozapress
+    plugs:
+      - home
