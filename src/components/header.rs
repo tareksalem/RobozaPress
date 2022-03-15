@@ -19,11 +19,22 @@ pub struct Header {
 
 impl Header {
     pub fn new() -> Self {
+        let asset_handler = {
+            let asset = Asset::get(config::get_loader_icon_path().to_str().unwrap());
+            if asset.is_some() {
+                svg::Handle::from_memory(asset.unwrap().data.to_vec())
+            } else {
+                svg::Handle::from_path(config::get_loader_icon_path().to_str().unwrap())
+            }
+            // println!("+=================== asset is {:#?}", asset);
+            // if asset.is_som
+        };
         Header {
             loading: false,
             clear_cache_btn_state: button::State::new(),
             resync_btn_state: button::State::new(),
-            icon_handle: svg::Handle::from_memory(Asset::get(config::get_loader_icon_path().to_str().unwrap()).unwrap().data.to_vec())
+            icon_handle: asset_handler
+            //  svg::Handle::from_memory(Asset::get(config::get_loader_icon_path().to_str().unwrap()).unwrap().data.to_vec())
         }
     }
     pub fn update(

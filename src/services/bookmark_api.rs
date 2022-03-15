@@ -13,7 +13,8 @@ use std::fs;
 use std::fs::OpenOptions;
 use std::io::BufReader;
 use std::io::Write;
-use std::path::Path;
+use std::path::{Path, PathBuf};
+use std::str::FromStr;
 use std::sync::Mutex;
 use std::sync::MutexGuard;
 use std::time::Duration;
@@ -152,8 +153,15 @@ impl BookmarkApi {
         let mut cfg = jfs::Config::default();
         cfg.single = true;
         cfg.pretty = true;
+        // match  Path::new(config::get_cache_file_path().as_path()).is_file() {
+        //     true => (),
+        //     false => {
+        //         let mut file = OpenOptions::new().create(true).write(true).open(config::get_cache_file_path()).expect("Couldn't open cache file");
+        //         file.write("{}".as_bytes()).expect("Couldn't open cache file");
+        //     },
+        // };
         Store::new_with_cfg(
-            Path::new(dirs::cache_dir().unwrap().as_path()).join(config::CACHE_FILE_PATH),
+            config::get_cache_file_path(),
             cfg,
         )
         .unwrap()
@@ -341,16 +349,21 @@ impl BookmarkApi {
         Ok(())
     }
     async fn sync_bookmark(bookmark: BookmarksItem, cat: BookmarkCategory) -> Result<(), Error> {
+        println!("======================= started to sync bookmark");
         let mut item_exists: bool = false;
         {
             let bookmark_api = Self::init();
             let db = &bookmark_api.db;
             let item = db.get::<MarkData>(&bookmark.id);
             if item.is_ok() {
+                println!("-------------------------- item is ok");
                 item_exists = true;
+            } else {
+                println!("============================= item is not ok {:#?}", item.err());
             }
         }
         if !item_exists {
+            println!("======================= saved item is not exist");
             Self::perform_scrape(&bookmark, cat).await;
         }
         Ok(())
@@ -371,7 +384,8 @@ impl BookmarkApi {
                     let mark_data = res.as_ref().unwrap().as_ref().unwrap();
                     let bookmark_api = Self::init();
                     let db = &bookmark_api.db;
-                    db.save_with_id(mark_data, &bookmark.id).ok();
+                    let save_res = db.save_with_id(mark_data, &bookmark.id);
+                    println!("========================= save result is {:?}", save_res);
                 }
             }
         }

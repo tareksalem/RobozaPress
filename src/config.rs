@@ -1,4 +1,4 @@
-use std::{path::{PathBuf, Path}, env};
+use std::{path::{PathBuf, Path}, env, str::FromStr};
 
 pub const L_INUX_UBUNTU_BOOKMARKS_PATH: &str = "google-chrome/Default/Bookmarks";
 pub const WINDOWS_BOOKMARKS_PATH: &str = "Google/Chrome/User Data/Default/Bookmarks";
@@ -22,7 +22,7 @@ pub fn get_loader_icon_path() -> PathBuf {
 pub fn get_os_config_path() -> PathBuf {
     let current_os: String = detect_os().to_lowercase();
     match current_os.as_str() {
-        "windows" => Path::new(dirs::config_dir().unwrap().as_path()).join("../").join(WINDOWS_BOOKMARKS_PATH),
+        "windows" => Path::new(dirs::cache_dir().unwrap().as_path()).join(WINDOWS_BOOKMARKS_PATH),
         "linux" => Path::new(dirs::config_dir().unwrap().as_path()).join(L_INUX_UBUNTU_BOOKMARKS_PATH),
         _ => panic!("not supported os"),
     }
@@ -33,4 +33,8 @@ fn detect_os() -> String {
 }
 pub fn get_bookmarks_path() -> String {
     get_os_config_path().display().to_string()
+}
+
+pub fn get_cache_file_path() -> PathBuf {
+    Path::new(dirs::cache_dir().unwrap().as_path()).join(Path::new(CACHE_FILE_PATH))
 }

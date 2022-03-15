@@ -1,0 +1,24 @@
+name: aan
+version: git
+summary: A Bookmarker App built in rust that scrapes your google chrome saved bookmarks
+
+description: |
+  Aan Is A Bookmarker App built in rust that scrapes you google chrome saved bookmarks and shows them in a good way with the ability to filter and search in them
+
+  composable:
+  - Filter Bookmarks.
+  - Search in bookmarks
+  - Navigate to your bookmarks easily
+
+base: core18
+confinement: devmode
+
+
+parts:
+  aan:
+    plugin: rust
+    source: .
+
+apps:
+  aan:
+    command: bin/aan

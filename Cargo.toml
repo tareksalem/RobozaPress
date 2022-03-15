@@ -24,3 +24,5 @@ tokio = {version = "*", features=["macros"]}
 open = "2.1.1"
 regex = "1.5.4"
 rust-embed= {version = "6.3.0", features = ["debug-embed"]}
+# openssl = { version = "0.10", features = ["vendored"] }
+
