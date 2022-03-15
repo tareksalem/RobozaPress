@@ -44,7 +44,7 @@ impl Application for Mark {
         (app, Command::perform(BookmarkApi::perform_load(), Message::Syncing))
     }
     fn title(&self) -> String {
-        String::from("Aan")
+        String::from("Gotcha")
     }
 
     fn update(
