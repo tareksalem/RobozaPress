@@ -21,6 +21,8 @@ parts:
     build-packages:
       - gcc
       - make
+      - pkg-config
+      - openssl
 
 apps:
   gotcha:
