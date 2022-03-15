@@ -1,9 +1,9 @@
-name: gotcha
+name: roboza-press
 version: git
 summary: A Bookmarker App built in rust that scrapes your google chrome saved bookmarks
 
 description: |
-  gotcha Is A Bookmarker App built in rust that scrapes you google chrome saved bookmarks and shows them in a good way with the ability to filter and search in them
+  Roboza Press Is A Bookmarker App built in rust that scrapes you google chrome saved bookmarks and shows them in a good way with the ability to filter and search in them
 
   composable:
   - Filter Bookmarks.
@@ -15,7 +15,7 @@ confinement: devmode
 
 
 parts:
-  gotcha:
+  roboza-press:
     plugin: rust
     source: .
     build-packages:
@@ -25,5 +25,5 @@ parts:
       - openssl
 
 apps:
-  gotcha:
-    command: bin/gotcha
+  roboza-press:
+    command: bin/roboza-press

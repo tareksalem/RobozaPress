@@ -2,9 +2,9 @@ use std::{path::{PathBuf, Path}, env, str::FromStr};
 
 pub const L_INUX_UBUNTU_BOOKMARKS_PATH: &str = "google-chrome/Default/Bookmarks";
 pub const WINDOWS_BOOKMARKS_PATH: &str = "Google/Chrome/User Data/Default/Bookmarks";
-pub const CACHE_MAIN_DIR: &str = "Gotcha";
-pub const CACHE_FILE_PATH: &str = "gotcha/gotcha.json";
-pub const CACHE_IMG_PATH: &str = "gotcha/images";
+pub const CACHE_MAIN_DIR: &str = "RobozaPress";
+pub const CACHE_FILE_PATH: &str = "robozaPress/robozaPress.json";
+pub const CACHE_IMG_PATH: &str = "robozaPress/images";
 pub const DEFAULT_IMG_PATH: &str = "default.png";
 pub const ASSETS_DIR_PATH: &str = "assets";
 pub const LOADER_ICON_PATH: &str = "loader-icon.svg";

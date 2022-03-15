@@ -71,7 +71,7 @@ impl Header {
         let mut content: Row<HeaderMessage> = Row::new().height(Length::Units(60));
         content = content.push(
             Column::new().push(
-                Text::new("Gotcha").color(style::TEXT_COLOR).size(25).height(Length::Fill).vertical_alignment(VerticalAlignment::Center)
+                Text::new("Roboza Press").color(style::TEXT_COLOR).size(25).height(Length::Fill).vertical_alignment(VerticalAlignment::Center)
             )
             .width(Length::FillPortion(2)).height(Length::Fill)
             // .padding(20)
