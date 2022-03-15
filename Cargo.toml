@@ -3,7 +3,7 @@ name = "gotcha"
 version = "0.1.0"
 edition = "2021"
 authors = ["Tarek <tarek.aly.salem@gmail.com>"]
-repository = "https://github.com/tareksalem/Aan"
+repository = "https://github.com/tareksalem/Gotcha"
 license-file = "./LICENSE"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
